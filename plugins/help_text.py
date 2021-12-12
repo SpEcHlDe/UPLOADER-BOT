@@ -77,14 +77,14 @@ async def start(bot, update):
     )
     
 @Clinton.on_message(filters.private & filters.command(["about"]))
-def about(bot, update):
-    
-    bot.send_message(
+async def about(bot, update):
+  await AddUser(bot, update)
+  await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.ABOUT_TEXT,
         parse_mode="html",
         reply_to_message_id=update.message_id,
-        disable_web_page_preview=True
+        disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
