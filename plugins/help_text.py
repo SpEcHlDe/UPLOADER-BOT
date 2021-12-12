@@ -37,7 +37,16 @@ async def help_user(bot, update):
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="⭕️ Join Updates Channel ⭕️", url="https://t.me/TeleRoidGroup")]]),
+        reply_markup=InlineKeyboardMarkup(
+          [
+            [
+              InlineKeyboardButton("Channel", url="https://t.me/Space_X_bots"),
+            ],
+            [
+              InlineKeyboardButton("🏡Home", callback_data="start"),
+              InlineKeyboardButton("♻️About", callback_data="about")
+            ],
+          ]  
    )
 
 
@@ -51,16 +60,13 @@ async def start(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
-                        "Source code ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"
-                    ),
-                    InlineKeyboardButton("Project Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
+                    InlineKeyboardButton("Source ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"),
+                    InlineKeyboardButton("Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
+                    InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot"),
                 ],
                 [
-                    InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot")
-                ],
-                [
-                    InlineKeyboardButton("Help", callback_data="help")
+                    InlineKeyboardButton("⚙️Help", callback_data="help"),
+                    InlineKeyboardButton("♻️About", callback_data="about")
                 ],
             ]
         ),
@@ -77,3 +83,16 @@ def about(bot, update):
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True   
     )
+
+@Clinton.on_callback_query()
+async def button(bot, update):
+      cb_data = update.data
+      if "help" in cb_data:
+        await update.message.delete()
+        await help(bot, update.message)
+      elif "about" in cb_data:
+        await update.message.delete()
+        await about(bot, update.message)
+      elif "start" in cb_data:
+        await update.message.delete()
+        await start(bot, update.message)
