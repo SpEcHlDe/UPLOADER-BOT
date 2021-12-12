@@ -56,10 +56,12 @@ async def start(bot, update):
                     ),
                     InlineKeyboardButton("Project Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
                 ],
-                [InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot")
+                [
+                    InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot")
                 ],
-                [InlineKeyboardButton(text=f"Help",
-                                      callback_data=Translation.HELP_USER)],
+                [
+                    InlineKeyboardButton"Help", callback_data="help")
+                ],
             ]
         ),
         reply_to_message_id=update.message_id
@@ -75,4 +77,3 @@ def about(bot, update):
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True   
     )
-
