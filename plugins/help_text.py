@@ -36,12 +36,12 @@ async def help_user(bot, update):
         text=Translation.HELP_USER,
         parse_mode="html",
         disable_web_page_preview=True,
-        reply_to_message_id=update.message_id,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Channel", url="https://t.me/Space_X_bots"),],[InlineKeyboardButton("🏡Home", callback_data="start"),InlineKeyboardButton("♻️About", callback_data="about")],])
+        reply_to_message_id=update.message_id
+    )
 
 
 @Clinton.on_message(filters.private & filters.command(["start"]))
-def start(bot, update):
+async def start(bot, update):
     # logger.info(update)
     await AddUser(bot, update)
     await bot.send_message(
