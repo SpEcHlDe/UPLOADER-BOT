@@ -60,7 +60,7 @@ async def start(bot, update):
                     InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot")
                 ],
                 [
-                    InlineKeyboardButton"Help", callback_data="help")
+                    InlineKeyboardButton("Help", callback_data="help")
                 ],
             ]
         ),
