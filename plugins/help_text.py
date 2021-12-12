@@ -36,6 +36,19 @@ async def help_user(bot, update):
         text=Translation.HELP_USER,
         parse_mode="html",
         disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("Source ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"),
+                    InlineKeyboardButton("Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
+                    InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot"),
+                ],
+                [
+                    InlineKeyboardButton("🏡Home", callback_data="start"),
+                    InlineKeyboardButton("♻️About", callback_data="about")
+                ],
+            ]
+        ),
         reply_to_message_id=update.message_id
     )
 
@@ -71,7 +84,20 @@ def about(bot, update):
         text=Translation.ABOUT_TEXT,
         parse_mode="html",
         reply_to_message_id=update.message_id,
-        disable_web_page_preview=True   
+        disable_web_page_preview=True
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("Source ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"),
+                    InlineKeyboardButton("Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
+                    InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot"),
+                ],
+                [
+                    InlineKeyboardButton("🏡Home", callback_data="start"),
+                    InlineKeyboardButton("⚙️Help", callback_data="help")
+                ],
+            ]
+        ),
     )
 
 @Clinton.on_callback_query()
@@ -86,3 +112,5 @@ async def button(bot, update):
       elif "start" in cb_data:
         await update.message.delete()
         await start(bot, update.message)
+        
+Clinton.run()
