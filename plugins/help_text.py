@@ -105,11 +105,11 @@ async def button(bot, update):
       cb_data = update.data
       if "help" in cb_data:
         await update.message.delete()
-        await help_user(bot, update.message)
+        await help_user(bot, update)
       elif "about" in cb_data:
         await update.message.delete()
-        await about(bot, update.message)
+        await about(bot, update)
       elif "start" in cb_data:
         await update.message.delete()
-        await start(bot, update.message)
+        await start(bot, update)
         
