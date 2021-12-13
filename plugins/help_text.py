@@ -21,10 +21,17 @@ else:
 from translation import Translation
 from pyrogram import filters
 from database.adduser import AddUser
-from pyrogram import Client as Clinton
+from pyrogram import Client
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ForceReply
+
+Clinton = Client(
+   "Uploader Bot",
+   api_id=Config.APP_ID,
+   api_hash=Config.API_HASH,
+   bot_token=Config.TG_BOT_TOKEN,
+)
 
 
 @Clinton.on_message(filters.private & filters.command(["help"]))
