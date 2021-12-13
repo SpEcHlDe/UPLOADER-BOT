@@ -21,12 +21,12 @@ else:
 from translation import Translation
 from pyrogram import filters
 from database.adduser import AddUser
-from pyrogram import Client
+from pyrogram import Client as Clinton
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ForceReply
 
-Clinton = Client(
+Me = Clinton(
    "Uploader Bot",
    api_id=Config.APP_ID,
    api_hash=Config.API_HASH,
@@ -107,7 +107,7 @@ async def about(bot, update):
         ),
     )
 
-@Clinton.on_callback_query()
+@Me.on_callback_query()
 async def button(bot, update):
 
       cb_data = update.data
