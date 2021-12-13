@@ -39,13 +39,13 @@ async def help_user(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("Source ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"),
-                    InlineKeyboardButton("Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
-                    InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot"),
+                    InlineKeyboardButton(text="Source ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"),
+                    InlineKeyboardButton(text="Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
+                    InlineKeyboardButton(text="Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot"),
                 ],
                 [
-                    InlineKeyboardButton("🏡Home", callback_data="start"),
-                    InlineKeyboardButton("♻️About", callback_data="about")
+                    InlineKeyboardButton(text="🏡Home", callback_data="start"),
+                    InlineKeyboardButton(text="♻️About", callback_data="about")
                 ],
             ]
         ),
@@ -63,13 +63,13 @@ async def start(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("Source ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"),
-                    InlineKeyboardButton("Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
-                    InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot"),
+                    InlineKeyboardButton(text="Source ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"),
+                    InlineKeyboardButton(text="Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
+                    InlineKeyboardButton(text="Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot"),
                 ],
                 [
-                    InlineKeyboardButton("⚙️Help", callback_data="help"),
-                    InlineKeyboardButton("♻️About", callback_data="about")
+                    InlineKeyboardButton(text="⚙️Help", callback_data="help"),
+                    InlineKeyboardButton(text="♻️About", callback_data="about")
                 ],
             ]
         ),
@@ -88,13 +88,13 @@ async def about(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("Source ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"),
-                    InlineKeyboardButton("Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
-                    InlineKeyboardButton("Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot"),
+                    InlineKeyboardButton(text="Source ⚡", url="https://github.com/Clinton-Abraham/UPLOADER-BOT"),
+                    InlineKeyboardButton(text="Channel 👨🏻‍💻", url="https://t.me/Space_X_bots"),
+                    InlineKeyboardButton(text="Developer 👨‍⚖️", url="https://t.me/clinton_abraham_bot"),
                 ],
                 [
-                    InlineKeyboardButton("🏡Home", callback_data="start"),
-                    InlineKeyboardButton("⚙️Help", callback_data="help")
+                    InlineKeyboardButton(text="🏡Home", callback_data="start"),
+                    InlineKeyboardButton(text="⚙️Help", callback_data="help")
                 ],
             ]
         ),
@@ -102,14 +102,15 @@ async def about(bot, update):
 
 @Clinton.on_callback_query()
 async def button(bot, update):
+
       cb_data = update.data
       if "help" in cb_data:
         await update.message.delete()
-        await help_user(bot, update)
+        await help_user(bot, update.message)
       elif "about" in cb_data:
         await update.message.delete()
-        await about(bot, update)
+        await about(bot, update.message)
       elif "start" in cb_data:
         await update.message.delete()
-        await start(bot, update)
+        await start(bot, update.message)
         
