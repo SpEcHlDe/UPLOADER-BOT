@@ -17,12 +17,12 @@ async def button(bot, update):
     elif "=" in cb_data:
         await ddl_call_back(bot, update)
     elif "help" in cb_data:
-        await update.message.edit()
+        await update.message.delete()
         await help_user(bot, update.message)
     elif "about" in cb_data:
-        await update.message.edit()
+        await update.message.delete()
         await about(bot, update.message)
     elif "start" in cb_data:
-        await update.message.edit()
+        await update.message.delete()
         await start(bot, update.message)
 
