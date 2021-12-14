@@ -6,6 +6,7 @@
 from pyrogram import Client as Clinton
 from plugins.youtube_dl_button import youtube_dl_call_back
 from plugins.dl_button import ddl_call_back
+from plugins.help_text import help_user, start, about
 
 @Clinton.on_callback_query()
 async def button(bot, update):
@@ -15,3 +16,13 @@ async def button(bot, update):
         await youtube_dl_call_back(bot, update)
     elif "=" in cb_data:
         await ddl_call_back(bot, update)
+    elif "help" in cb_data:
+        await update.message.edit()
+        await help_user(bot, update.message)
+    elif "about" in cb_data:
+        await update.message.edit()
+        await about(bot, update.message)
+    elif "start" in cb_data:
+        await update.message.edit()
+        await start(bot, update.message)
+
