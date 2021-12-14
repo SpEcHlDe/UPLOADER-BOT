@@ -26,13 +26,6 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, ForceReply
 
-Me = Clinton(
-   "Uploader Bot",
-   api_id=Config.APP_ID,
-   api_hash=Config.API_HASH,
-   bot_token=Config.TG_BOT_TOKEN,
-)
-
 
 @Clinton.on_message(filters.private & filters.command(["help"]))
 async def help_user(bot, update):
@@ -107,17 +100,3 @@ async def about(bot, update):
         ),
     )
 
-@Me.on_callback_query()
-async def button(bot, update):
-
-      cb_data = update.data
-      if "help" in cb_data:
-        await update.message.delete()
-        await help_user(bot, update.message)
-      elif "about" in cb_data:
-        await update.message.delete()
-        await about(bot, update.message)
-      elif "start" in cb_data:
-        await update.message.delete()
-        await start(bot, update.message)
-        
